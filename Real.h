@@ -383,17 +383,30 @@ public:
 
     //stupid version
     static Real pow(const Real &x, int y) {
-        assert(y > 0);
+
         if(y == 0)
             return Real(1);
         if(y == 1)
             return x;
         Real r = x;
-        for(int i = 0; i < y - 1; i++)
+        if(y < 0)
         {
-            r *= x;
+            for(int i = 0; i < -y - 1; i++)
+            {
+                r *= x;
+            }
+            return Real(1)/r;
+
         }
-        return r;
+        else
+        {
+            for(int i = 0; i < y - 1; i++)
+            {
+                r *= x;
+            }
+            return r;
+        }
+
     }
 
 };
