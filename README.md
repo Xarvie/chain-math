@@ -1,7 +1,9 @@
 # chain-math
 
 chain-math is a fast, simple and safe fixed-point library.
+
 it provides the same function interface as the standard <cmath.h>, so that you can easily refactor the old code.
+
 It's written in the modern C++ 20 standard, so compiler required GCC >= 10.1 or clang 10.0+, VS2019 16.7 above.
 
 ### Quick start:
