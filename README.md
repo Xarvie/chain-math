@@ -10,6 +10,9 @@ It's written in the modern C++ 20 standard, so compiler required GCC >= 10.1 or 
 
 Copy the file Real.h to your project and insert code:
 ``` cpp
+#include <iostream>
+#include <Real.h>
+
 int main() {
     Real r = "1234567.8987654321E2"_r;
     r /= 4567_r;
