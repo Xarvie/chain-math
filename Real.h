@@ -1670,7 +1670,7 @@ public:
 
         _REAL_CONSTEXPR data_t FRAC = udata_t(1) << Cf;
         if (exp.mRaw % FRAC == 0)
-            return pow(base, exp.mRaw / FRAC);
+            return pownf(base, exp.mRaw / FRAC);
 
         assert(base > 0_r);
         return exp2(log2(base) * exp);
