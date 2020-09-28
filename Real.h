@@ -26,11 +26,16 @@
 
 
 #ifdef __GNUC__
-#define _REAL_CONSTEXPR
+#define _REAL_CONSTEXPR constexpr
 #elif __clang__
 #define _REAL_CONSTEXPR constexpr
 #elif _MSC_VER
-#define _REAL_CONSTEXPR constexpr
+#define _REAL_CONSTEXPR
+#endif
+
+#if _MSC_VER
+#pragma warning( push , 1)
+#pragma warning( disable: 4146)
 #endif
 
 //#ifdef __GNUC__
@@ -927,6 +932,7 @@ extern _REAL_CONSTEXPR Real operator "" _r(unsigned long long v);
 
 class Real {
 public:
+    static_assert(sizeof(void *) == 8, "compiler must set to 64bit");
     typedef int64_t T;
     typedef uint64_t UT;
     static const unsigned int Cf = 32;
@@ -942,10 +948,12 @@ public:
     _REAL_CONSTEXPR Real() = default;
 
     _REAL_CONSTEXPR Real(int intVal) {
+
         mRaw = (data_t(intVal) << Cf);
     }
 
     static _REAL_CONSTEXPR Real rawToReal(const data_t raw) {
+
         Real r;
         r.mRaw = raw;
         return r;
@@ -1961,6 +1969,8 @@ _REAL_CONSTEXPR Real operator "" _r(unsigned long long v) {
 #endif
 
 #endif //UNTITLED_REAL_H
-
+#if _MSC_VER
+#pragma warning( pop)
+#endif
 
 #pragma clang diagnostic pop
