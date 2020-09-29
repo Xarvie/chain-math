@@ -47,6 +47,7 @@
 #include <cuchar>
 #include <cassert>
 #include <cmath>
+#include <cstdio>
 
 #ifdef _MSC_VER
 #include <cinttypes>
