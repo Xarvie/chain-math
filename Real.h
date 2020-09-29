@@ -1058,12 +1058,6 @@ public:
         return (double) ((mRaw >> Cf)) + double(mRaw & f_mask) / (double) f_range;
     }
 
-    std::string str() const {
-
-        return std::to_string((mRaw >> Cf)) + "." +
-               std::to_string((rawToReal((mRaw & f_mask)) * 1000000000).mRaw >> Cf);
-    }
-
     static _REAL_CONSTEXPR data_t doubleToData(double f) {
         return f * (data_t) (udata_t(1u) << Cf);
     }
